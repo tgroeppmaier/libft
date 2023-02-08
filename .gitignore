@@ -1,0 +1,8 @@
+folder
+*.o
+*.a
+main.c
+*.out
+*.pdf
+*.swp
+.vscode
