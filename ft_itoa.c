@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgroeppm <tgroeppm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tgroeppm <tgroeppm@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 09:23:37 by tgroeppm          #+#    #+#             */
-/*   Updated: 2023/02/03 09:38:05 by tgroeppm         ###   ########.fr       */
+/*   Updated: 2023/02/08 14:34:59 by tgroeppm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int	ft_count(int nb)
 
 void	ft_convert(int nb, char *str)
 {
-	if (nb >= 1)
+	while (nb >= 1)
 	{
 		*str = nb % 10 + '0';
 		str--;
-		ft_convert(nb / 10, str);
+		nb /= 10;
 	}
 }
 
@@ -96,13 +96,13 @@ char	*ft_itoa(int nb)
 		return (str - 1);
 	return (str);
 }
-/*
+/* 
 int	main(void)
 {
-	int i;
+	int	i;
 
-	i = 2147483647;
+	i = -345;
 	printf("%s\n", ft_itoa(i));
 	return (0);
 }
-*/
+ */
