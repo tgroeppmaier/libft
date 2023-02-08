@@ -6,7 +6,7 @@
 #    By: tgroeppm <tgroeppm@student.42prague.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/13 13:41:52 by tgroeppm          #+#    #+#              #
-#    Updated: 2023/02/08 18:01:43 by tgroeppm         ###   ########.fr        #
+#    Updated: 2023/02/08 19:02:34 by tgroeppm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CFLAGS=-c -Wall -Wextra -Werror
 NAME=libft.a
 SRC=*.c
 OBJ=*.o
-BONUS=lstnew.c lstadd_front.c lstsize.c lstlast.c lstadd_back.c lstdelone.c lstclear.c lstiter.c
+# BONUS=ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c
 
 .PHONY: all clean fclean re
 
@@ -38,8 +38,8 @@ re: fclean all
 	make all
 	
 bonus: 
-	$(CC) $(CFLAGS) $(SRC)
-	ar rc NAME lstnew.o lstadd_front.o
+	$(CC) $(CFLAGS) ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c
+	ar rc $(NAME) ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o
 so:
 	$(CC) -fPIC $(CFLAGS) $(SRC)
 	gcc -nostartfiles -shared -o libft.so $(OBJ)
