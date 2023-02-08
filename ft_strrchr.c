@@ -6,7 +6,7 @@
 /*   By: tgroeppm <tgroeppm@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 14:50:40 by tgroeppm          #+#    #+#             */
-/*   Updated: 2023/02/06 12:06:17 by tgroeppm         ###   ########.fr       */
+/*   Updated: 2023/02/07 17:24:06 by tgroeppm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char	*ft_strrchr(const char *str, int c)
 	}
 	return (NULL);
 }
+
 /* 
 int	main(void)
 {

@@ -6,3 +6,4 @@ main.c
 *.pdf
 *.swp
 .vscode
+*.so

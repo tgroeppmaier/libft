@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgroeppm <tgroeppm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tgroeppm <tgroeppm@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 09:42:10 by tgroeppm          #+#    #+#             */
-/*   Updated: 2023/02/03 09:42:11 by tgroeppm         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:11:28 by tgroeppm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,69 +15,49 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-size_t	ft_strlcpyx(char *dst, const char *src, size_t size)
-{
-	size_t	i;
-
-	i = 0;
-	if (size != 0)
-	{
-		while (i < size - 1 && src[i])
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	return (size);
-}
-
 int	ft_wcount(const char *s, char c)
 {
-	int	i;
 	int	count;
 
-	i = 0;
-	if (s[0] != c)
-		count = 1;
-	else
-		count = 0;
-	while (s[i])
+	count = 0;
+	while (*s)
 	{
-		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0')
-			count++;
-		i++;
+		if (*s != c)
+		{
+			++count;
+			while (*s && *s != c)
+				++s;
+		}
+		else
+			++s;
 	}
-	if (count > 0)
-		return (count);
-	else
-		return (1);
+	return (count);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**array;
-	int		i;
 	int		k;
 	int		count;
 
-	i = 0;
 	k = 0;
+	if (!s)
+		return (NULL);
 	array = malloc(sizeof(char *) * (ft_wcount(s, c) + 1));
 	if (!array)
 		return (NULL);
-	while (s[i])
+	while (*s)
 	{
 		count = 0;
-		while (s[i] != c && s[i])
+		while (*s != c && *s)
 		{
 			count++;
-			i++;
+			s++;
 		}
 		if (count > 0)
-			array[k++] = ft_strndup(s + i - count, count);
-		if (s[i])
-			i++;
+			array[k++] = ft_strndup(s - count, count);
+		if (*s)
+			s++;
 	}
 	array[k] = NULL;
 	return (array);
