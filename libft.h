@@ -6,7 +6,7 @@
 /*   By: tgroeppm <tgroeppm@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 09:45:14 by tgroeppm          #+#    #+#             */
-/*   Updated: 2023/02/06 10:21:16 by tgroeppm         ###   ########.fr       */
+/*   Updated: 2023/02/08 15:00:32 by tgroeppm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,7 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+t_list				*ft_lstnew(void *content);
 
 #endif
