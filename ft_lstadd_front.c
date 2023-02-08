@@ -1,42 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgroeppm <tgroeppm@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 09:07:01 by tgroeppm          #+#    #+#             */
-/*   Updated: 2023/02/08 17:52:50 by tgroeppm         ###   ########.fr       */
+/*   Created: 2023/02/08 17:01:53 by tgroeppm          #+#    #+#             */
+/*   Updated: 2023/02/08 17:52:55 by tgroeppm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
-#include <stdlib.h>
+#include <stdio.h>
 
-void	*ft_calloc(size_t count, size_t size)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	void	*ptr;
-	size_t	test;
-
-	if (count == 0 || size == 0)
-	{
-		ptr = malloc(0);
-		return (ptr);
-	}
-	test = count * size;
-	if (test / count != size)
-		return (NULL);
-	ptr = malloc(count * size);
-	if (!ptr)
-		return (NULL);
-	ft_memset(ptr, 0, count * size);
-	return (ptr);
+	new->next = *lst;
+	*lst = new;
 }
-/*
-	int	main(void)
+/* 
+int main ()
 {
-	ft_calloc(3, sizeof(int));
-	return (0);
-}
-*/
+	t_list new;
+	ft_lstadd_front()
+}  */
