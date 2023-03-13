@@ -6,7 +6,7 @@
 /*   By: tgroeppm <tgroeppm@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 09:06:27 by tgroeppm          #+#    #+#             */
-/*   Updated: 2023/02/06 14:02:25 by tgroeppm         ###   ########.fr       */
+/*   Updated: 2023/03/09 08:17:49 by tgroeppm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	if (ft_strlen(s) < start)
 		return (ft_strdup(""));
-	if (ft_strlen(s) < start)
+	/* 
+	if (ft_strlen(s) < start)	
 		len = 0;
+	 */
 	if (ft_strlen(s + start) < len)
 		len = ft_strlen(s + start);
 	dst = malloc(len + 1);

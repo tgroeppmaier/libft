@@ -5,104 +5,82 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgroeppm <tgroeppm@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 09:23:37 by tgroeppm          #+#    #+#             */
-/*   Updated: 2023/02/08 14:34:59 by tgroeppm         ###   ########.fr       */
+/*   Created: 2023/03/12 18:05:05 by tgroeppm          #+#    #+#             */
+/*   Updated: 2023/03/13 14:16:09 by tgroeppm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 
-int	ft_count(int nb)
+int	ft_countdigit(int n)
 {
-	int	len;
+	int	i;
 
-	len = 1;
-	if (nb < 0)
-		nb = nb * -1;
-	while (nb >= 10)
+	i = 1;
+	if (n < 0)
 	{
-		nb = nb / 10;
-		len++;
+		n = n * -1;
+		i++;
 	}
-	return (len);
+	while (n >= 10)
+	{
+		n = n / 10;
+		i++;
+	}
+	return (i);
 }
 
-void	ft_convert(int nb, char *str)
+char	*ft_convert(char *str, int n, int len)
 {
-	while (nb >= 1)
-	{
-		*str = nb % 10 + '0';
-		str--;
-		nb /= 10;
-	}
-}
-
-char	*ft_makestr(int len, int nb, char *str)
-{
-	if (nb < 0)
-	{
-		str = (char *)malloc(len + 2);
-		if (!str)
-			return (NULL);
-		nb = nb * -1;
-		str[0] = '-';
-		str++;
-	}
-	else
-	{
-		str = (char *)malloc(len + 1);
-		if (!str)
-			return (NULL);
-	}
 	str[len] = '\0';
-	if (nb == 0)
-		str[0] = '0';
-	return (str);
-}
-
-char	*min_int(char *str)
-{
-	str = malloc(12);
-	if (!str)
-		return (NULL);
-	ft_strlcpy(str, "-2147483648", 12);
-	return (str);
-}
-
-char	*ft_itoa(int nb)
-{
-	int		len;
-	char	*str;
-	int		sign;
-
-	str = NULL;
-	sign = 0;
-	if (nb == -2147483648)
-		return (min_int(str));
-	len = ft_count(nb);
-	str = ft_makestr(len, nb, str);
-	if (!str)
-		return (NULL);
-	if (nb < 0)
+	if (n < 0)
 	{
-		sign = 1;
-		nb = nb * -1;
+		str[0] = '-';
+		n *= -1;
 	}
-	ft_convert(nb, str + len - 1);
-	if (sign)
+	while (n >= 1 && len > 0)
+	{
+		len--;
+		str[len] = n % 10 + '0';
+		n = n / 10;
+	}
+	if (str[0] == '-')
+		return (str);
+	else
+		return (str);
+}
+
+char	*ft_itoa(int n)
+{
+	char	*str;
+	int		len;
+
+	if (n == 0)
+	{
+		str = malloc(2);
+		*str = '0';
+		str++;
+		*str = '\0';
 		return (str - 1);
+	}
+	if (n == -2147483648)
+	{
+		str = malloc(12);
+		ft_strlcpy(str, "-2147483648", 12);
+		return (str);
+	}
+	len = ft_countdigit(n);
+	str = malloc(len + 1);
+	if (!str)
+		return (NULL);
+	str = ft_convert(str, n, len);
 	return (str);
 }
 /* 
 int	main(void)
 {
-	int	i;
-
-	i = -345;
-	printf("%s\n", ft_itoa(i));
+	printf("%s", ft_itoa(-2147483648));
 	return (0);
-}
- */
+} */
